@@ -18,14 +18,18 @@ export default function App(props) {
                 headerItems={[
                     <GithubLink
                         key='0'
-                        url='https://github.com/remorses/dokz'
+                        url='https://github.com/aserto-dev/aserto-docs'
                     />,
                     <ColorModeSwitch key='1' />,
                 ]}
                 sidebarOrdering={{
                     'index.mdx': true,
-                    Documents_Group: {
-                        'another.mdx': true,
+                    'policy-as-code.mdx': true,
+                    'enterprise-ready.mdx': true,
+                    'built-for-developers.mdx': true,
+                    'getting-started': {
+                        'create-account.mdx': true,
+                        'quickstart.mdx': true,
                     },
                 }}
             >
