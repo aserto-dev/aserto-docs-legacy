@@ -1,4 +1,4 @@
-import { DokzProvider, GithubLink, ColorModeSwitch } from "dokz";
+import { DokzProvider, GithubLink, ColorModeSwitch } from "@aserto/dokz";
 import React, { Children, Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
