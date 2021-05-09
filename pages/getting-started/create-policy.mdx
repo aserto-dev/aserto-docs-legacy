@@ -1,0 +1,29 @@
+---
+name: Create your first policy
+---
+
+import { Playground } from 'dokz'
+
+# Create a policy
+
+The underpinning of Aserto's authorization model is a [policy](/policy-as-code). 
+
+Policies are authored, stored, and versioned as code in a `git` repository.
+
+## Add a policy 
+
+![Add a policy](/add-a-policy.png)
+
+When you click on “Add a policy”, select “GitHub” as your source code provider, and click the “Sign in & connect” button.
+
+![sign in on github](/sign-in-github.png)
+
+Once you complete GitHub’s OAuth2 consent flow, you'll be asked to select an organization & repo. Select the “New (using template)” radio button, and select the `policy-peoplefinder` template.
+
+![create from template](/create-from-template.png)
+
+Name your new repository something like `policy-peoplefinder`. Finally, name your policy with a descriptive name (e.g. peoplefinder). You’ll use this name later with the CLI.
+
+![name policy](/name-policy.png)
+
+Congratulations! You now have a clone of the `policy-peoplefinder` policy template in your GitHub account, hooked up to Aserto. Later, you’re going to modify this policy repository to change the authorization policy of the PeopleFinder application. But first, we want to connect to your Auth0 tenant and sync your users into the Aserto authorizer.

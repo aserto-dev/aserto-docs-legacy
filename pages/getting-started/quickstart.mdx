@@ -1,5 +1,5 @@
 ---
-name: Quickstart
+name: PeopleFinder Quickstart
 ---
 
 import { Playground } from 'dokz'
@@ -11,12 +11,9 @@ import { Playground } from 'dokz'
 This guide will take you through the process of creating your first policy and using it from a 
 demo application called PeopleFinder.
 
-This guide assumes that you already have the following:
+At the end of the process, you will have the following:
 *   A free Aserto account
 *   A free tenant associated with the account
-
-At the end of the process, you will have the following:
-
 *   A connection to your Source Code Control provider (in our examples, GitHub), so Aserto can help you create Policy bundles from policies stored in a policy repository
 *   A connection to your Identity Provider (in our examples, Auth0), so that Aserto can sync your users into its directory
 *   An Authorizer API key, which allows your application to talk to the Aserto hosted authorizer 
@@ -54,6 +51,30 @@ Congratulations! You now have a clone of the `policy-peoplefinder` policy templa
 
 ### Connect your Identity Provider
 
+The PeopleFinder sample uses [Auth0](https://www.auth0.com) as its identity provider.  If you don't have 
+an Auth0 account, create one now.  
+
+**Auth0 machine-to-machine application**
+
+Aserto needs to connect to an identity provider as the source of user attributes and roles. With Auth0, this means 
+creating a machine-to-machine (M2M) application that is authorized to call the Auth0 management API. If you don't 
+have an M2M application set up, create one now using the [Auth0 dashboard](https://manage.auth0.com/dashboard). 
+It will look something like this:
+
+![Auth0 M2M application](/auth0-m2m.png)
+
+> Ensure that the M2M application is authorized to call the Auth0 management API:
+
+![Auth0 M2M application](/auth0-m2m-mgmt.png)
+
+> Ensure the scopes that are authorized include at least `read:users` so that Aserto can read your users.  
+
+![Auth0 M2M scopes](/auth0-m2m-perms.png)
+
+**Connect Aserto to your Auth0 tenant**
+
+Now that you have an Auth0 M2M application, you're ready to connect Aserto to Auth0.
+
 Click on the “Connections” Navbar tab to see your connections.
 
 ![connections](/connections.png)
@@ -62,17 +83,7 @@ Click on the “Connect” button for Auth0. You will be prompted to enter conne
 
 ![connect auth0](/connect-auth0.png)
 
-> **Important note**: enter the Client ID and Secret for a Machine-to-Machine (M2M) Application, which has been authorized to talk to the Auth0 Management API. In the [Auth0 dashboard](https://manage.auth0.com/dashboard), select an existing **M2M application** that has access to the **Auth0 Management API**, or create a new one.  It will look something like this:
-
-![alt_text](images/image9.png "image_tooltip")
-
-Ensure the scopes that are authorized include at least `read:users` so that Aserto can read your users.  
-
-![alt_text](images/image10.png "image_tooltip")
-
 Copy the Domain, Client ID, and Client Secret from the Auth0 UI into the Aserto UI.
-
-![alt_text](images/image11.png "image_tooltip")
 
 ### Set up test users for PeopleFinder
 
@@ -89,9 +100,7 @@ aserto directory load-users --provider json --input acmecorp.json
 
 Once you’ve connected your Auth0 tenant as an Identity Provider and loaded test users, you should be able to click the Users tab in the Navbar and see your users stream in using the Directory browser.
 
-![alt_text](images/image12.png "image_tooltip")
-
-![alt_text](images/image13.png "image_tooltip")
+![users](/users.png)
 
 ## 2: Setting up the Auth0 Single-Page Application and API
 

@@ -1,0 +1,97 @@
+---
+name: Make a policy change
+---
+
+import { Playground } from 'dokz'
+
+# Make a policy change
+
+Now that we have PeopleFinder up and running against our policy, we'll make a policy change 
+and see it reflected in PeopleFinder.
+
+## Making a local clone of the policy repository
+
+In the Policy configuration page, click on the `https://github.com/[user]/policy-peoplefinder]` link which opens a new browser window. 
+
+![peoplefinder-clone](/peoplefinder-clone.png)
+
+Copy the clone URL, open a terminal window, and do a `git clone` on the URL. Open a code editor window in that repository directory. You’ll see all the modules for the PeopleFinder policy.
+
+The policy modules are organized by HTTP method and path. E.g. the `post.rego` file in the `src/policies/__id directory` has a package named `peoplefinder.POST.api.users.__id.`
+
+This package controls access to the “Update” button at the bottom of a User card, and defines the policy that authorizes users to make changes to `department` and `title` attributes (see the code listing below).
+
+```rego
+package peoplefinder.POST.api.users.__id
+
+default allowed = false
+default visible = true
+default enabled = false
+
+allowed {
+    input.user.attr.department == "Operations"
+}
+
+enabled {
+    allowed
+}
+```
+
+## Policy Change
+
+Let’s make a change that will allow managers to update the `department` and `title` of their employees.
+
+By default, the policy defined above only allows users in the “Operations” department to Update the extended user attributes, and only enables the button if the action is allowed.
+
+If you change the line defining the `enabled `decision to default to `true `instead of `false`, the Update button will be enabled for all users.
+
+```rego
+default enabled = true
+```
+
+If you then add the following `allowed `block to the file, the policy will allow the operation if the logged-in user is the manager of the user they are trying to Update.
+
+```rego
+allowed {
+   dir.is_manager_of(input.user.id, input.resource)
+}
+```
+
+The final state of the Rego file should look like the code listing below:
+
+```rego
+package peoplefinder.POST.api.users.__id
+
+default allowed = false
+default visible = true
+default enabled = true
+
+allowed {
+    input.user.attr.department == "Operations"
+}
+
+allowed {
+   dir.is_manager_of(input.user.id, input.resource)
+}
+
+enabled {
+    allowed
+}
+```
+
+Now commit the changes, and create and push a new tag, so that the Aserto CI/CD workflow for policy changes kicks in, creates a new policy bundle based on the new tag, and makes it available to the authorizer:
+
+```bash
+git commit -am 'allow managers to update their employees'
+git push 
+git tag v0.0.1    # or whatever is the next tag number 
+git push --tags
+```
+
+Check back to the console and ensure that the new policy is reflected in the Policy browser.
+
+![alt_text](images/image30.png "image_tooltip")
+
+When you see the new policy has been loaded by the authorizer, go back to PeopleFinder, reload, now the Update button is enabled, and a manager should be able to update their employee’s title.
+
+To recap: we were able to change the authorization policy of the application without changing the application code, and without redeploying the application itself!

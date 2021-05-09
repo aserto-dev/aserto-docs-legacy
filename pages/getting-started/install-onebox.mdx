@@ -1,0 +1,23 @@
+---
+name: Install the OneBox for local development
+---
+
+import { Playground } from 'dokz'
+
+# Installing a local authorizer running as a docker container
+
+In a previous step, we installed the Aserto CLI.  You can use the same CLI to install and run a local authorizer on your desktop.
+
+```
+aserto dev install  # installs docker image
+aserto dev configure --name peoplefinder # what you called the policy
+aserto dev start --name peoplefinder # will use the peoplefinder policy
+aserto dev console  # will show you what the local authorizer is running
+aserto dev status   # displays the running status of the authorizer
+aserto dev stop     # stops the authorizer
+aserto dev update   # updates the authorizer image to latest
+```
+
+## Next Steps
+
+Clone the PeopleFinder sample app repository in your GitHub account, and check out how the peoplefinder application uses the Aserto express SDK and React SDK to inject authorization into the application’s API, and conditionally render UI elements based on the “visible” and “enabled” attributes of the policy.
