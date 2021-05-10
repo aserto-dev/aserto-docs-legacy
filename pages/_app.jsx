@@ -56,6 +56,34 @@ const CustomLink = ({children, href, ...props}) => {
   );
 }
 
+const HeaderLink = ({ children, ...props }) => {
+  return (
+    <ChakraLink
+      w='fit-content'
+      position='relative'
+      lineHeight='1em'
+      textDecoration='none'
+      color='#ECEDED'
+      fontWeight='light'
+      borderBottom='1px solid'
+      borderColor='transparent'
+      py='0.2em'
+      _hover={{
+          borderColor: 'currentColor',
+      }}
+      style={{
+        marginRight: 32,
+        marginLeft: 12,
+      }}
+      {...props}
+    >
+      <a {...props}>
+        {children}
+      </a>                
+    </ChakraLink>    
+  )  
+}
+
 export default function App(props) {
   const { Component, pageProps } = props;
   return (
@@ -69,15 +97,14 @@ export default function App(props) {
       </Head>
       <DokzProvider
         headerItems={[
-          <GithubLink
-            key="0"
-            url="https://github.com/aserto-dev/aserto-docs"
-          />,
-          <ColorModeSwitch key="1" />,
+          <ColorModeSwitch key="0" />,
+          <HeaderLink key="1" href="https://blog.aserto.com">Blog</HeaderLink>,
+          <HeaderLink key="2" href="https://aserto.com/about">About</HeaderLink>,
+          <HeaderLink key="3" href="https://aserto.com/careers">Careers</HeaderLink>,          
         ]}
         initialColorMode="dark"
         headerLogo={
-          <img src="/logo.png" width="50px" />
+          <img src="/Aserto-logo-color-120px.png" />
         }
         mdxComponents={{
           a: CustomLink
