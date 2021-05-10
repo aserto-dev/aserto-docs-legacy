@@ -1,5 +1,5 @@
 const compose = require('compose-function')
-const { withDokz } = require('dokz/dist/plugin')
+const { withDokz } = require('@aserto/dokz/dist/plugin')
 
 const composed = compose(withDokz)
 
