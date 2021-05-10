@@ -94,6 +94,10 @@ export default function App(props) {
           rel="stylesheet"
           key="google-font-Fira"
         />
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="description" content="Aserto documentation" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <title>Aserto Documentation</title>
       </Head>
       <DokzProvider
         headerItems={[
@@ -104,7 +108,13 @@ export default function App(props) {
         ]}
         initialColorMode="dark"
         headerLogo={
-          <img src="/Aserto-logo-color-120px.png" />
+          <a href='https://www.aserto.com'>
+            <img
+              src={'/Aserto-logo-color-120px.png'}
+              alt="Aserto"
+              width={120}
+            />
+          </a>
         }
         mdxComponents={{
           a: CustomLink
