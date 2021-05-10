@@ -13,7 +13,7 @@
         "@emotion/react": "latest",
         "@emotion/styled": "latest",
         "framer-motion": "latest",
-        "@aserto/dokz": "^2.0.20",
+        "@aserto/dokz": "^2.0.24",
         "next": "latest",
         "react": "16.13.1",
         "react-dom": "16.13.1"
