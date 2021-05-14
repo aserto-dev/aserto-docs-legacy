@@ -15,12 +15,16 @@ Aserto authorization system, which can either be run independently with no conne
 plane, or can be connected to the Aserto control plane to automatically receive policy changes, user attribute 
 changes, and push decision logs back to the control plane.
 
-To get started with the OneBox, you can pull it down using the Aserto CLI, which we've previously installed.
+To get started with the OneBox, you can pull it down using the Aserto CLI.
 
-If you haven't yet, you can install it using `brew` on Mac or Linux:
+If you haven't yet, you can install it using `brew` on Mac or Linux. 
 
 ```bash
 brew tap aserto-dev/tap && brew install aserto
+```
+
+Login to your Aserto account:
+```bash
 aserto auth login
 ```
 

@@ -128,6 +128,7 @@ export default function App(props) {
             "quickstart.mdx": true,
             "create-account.mdx": true,
             "create-policy.mdx": true,
+            "set-up-users.mdx": true,
             "connect-idp.mdx": true,
             "create-auth0-app.mdx": true,
             "deploy-peoplefinder.mdx": true,

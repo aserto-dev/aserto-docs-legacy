@@ -4,15 +4,16 @@ name: Connect an identity provider
 
 # Connect Auth0 as an identity provider
 
-The PeopleFinder sample uses [Auth0](https://www.auth0.com) as its identity provider.  If you don't have 
-an Auth0 account, create one now.  
+Aserto needs to connect to one or more identity providers as the source of user attributes and roles. 
+
+As we mentioned, the PeopleFinder sample uses [Auth0](https://www.auth0.com) as its identity provider, and 
+so we will connect Aserto to your Auth0 tenant.
 
 ## Auth0 machine-to-machine application
 
-Aserto needs to connect to an identity provider as the source of user attributes and roles. With Auth0, this means 
-creating a machine-to-machine (M2M) application that is authorized to call the Auth0 management API. If you don't 
-have an M2M application set up, create one now using the [Auth0 dashboard](https://manage.auth0.com/dashboard). 
-It will look something like this:
+In the last section, you imported a set of test users into Auth0 using a Machine-to-Machine (M2M) 
+Application. We're going to use the same Domain, Client ID, and Client Secret values to connect 
+Aserto to Auth0.
 
 ![Auth0 M2M application](/auth0-m2m.png)
 
@@ -26,8 +27,6 @@ It will look something like this:
 
 ## Connect Aserto to your Auth0 tenant
 
-Now that you have an Auth0 M2M application, you're ready to connect Aserto to Auth0.
-
 Click on the “Connections” Navbar tab to see your connections.
 
 ![connections](/connections.png)
@@ -38,19 +37,12 @@ Click on the “Connect” button for Auth0. You will be prompted to enter conne
 
 Copy the Domain, Client ID, and Client Secret from the Auth0 UI into the Aserto UI.
 
-## Set up test users for PeopleFinder
-
-PeopleFinder expects to operate over users with extended attributes like `department, title, manager`.  In order to set things up correctly, you can load these user definitions into your Auth0 tenant using our CLI. Let’s install the Aserto CLI and load users into your tenant:
-
-```bash
-brew tap aserto-dev/tap && brew install aserto
-aserto auth login
-wget https://raw.githubusercontent.com/aserto-dev/aserto-cli/main/assets/acmecorp.json
-aserto directory load-users --provider json --input acmecorp.json
-```
+When you click the Connect button, Aserto will start streaming your Auth0 tenant users into 
+the Aserto directory.
 
 ## Exploring Users
 
-Once you’ve connected your Auth0 tenant as an Identity Provider and loaded test users, you should be able to click the Users tab in the Navbar and see your users stream in using the Directory browser.
+Once you’ve connected your Auth0 tenant as an Identity Provider and loaded test users, you should be 
+able to click the Users tab in the Navbar and see your users stream in using the Directory browser.
 
 ![users](/users.png)
