@@ -30,8 +30,9 @@ or create a new one.  It will look something like this:
 
 ![Auth0 M2M application management](/auth0-m2m-mgmt.png)
 
-> Ensure the scopes that are authorized include at least `read:users` and `write:users` 
-so that the `aserto-idp-seed` tool can read and write users.  
+> Ensure the scopes that are authorized include at least `read:users`, `create:users`, and 
+`update:users`, so that the `aserto-idp-seed` tool can read and write users.  You can remove 
+`create:users` and `update:users` once the seed too is done.
 
 ![Auth0 M2M scopes](/auth0-m2m-perms.png)
 
