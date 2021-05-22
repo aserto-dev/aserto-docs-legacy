@@ -26,7 +26,7 @@ Authorizers.
 ## User Context
 
 Policies can reference [user context](/overview/policy#user-context). A calling application can 
-provide the [identity context](/authorizer/identity-context) which is used to load that user context.
+provide the [identity context](/authorizer-guide/identity-context) which is used to load that user context.
 
 The Authorizer will look up the user identity in its local Edge Directory Service  (EDS). It will then 
 load the user context and make it available to the Policy as `input.user`.

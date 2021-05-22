@@ -1,0 +1,48 @@
+---
+name: Managing Connections
+---
+
+# Managing Connections
+
+The Aserto Control Plane manages [connections](/overview/connections) to external systems that are 
+the source of Aserto artifacts.
+
+## Connection types
+
+The Console currently supports two connection types - Identity Providers and Source Code Control systems.
+
+## Connecting an Identity Provider
+
+Aserto needs to connect to one or more identity providers as the source of user attributes and roles. 
+
+> Currently Aserto supports Auth0 as an identity provider. More are on the way!
+
+Click on the “Connections” Navbar tab to see your connections.
+
+![connections](/connections.png)
+
+Click on the “Connect” button for the identity provider. You will be prompted to enter connection parameters:
+
+![connect auth0](/connect-auth0.png)
+
+Copy the Domain, Client ID, and Client Secret from the Auth0 UI into the Aserto UI.
+
+> Note: the Auth0 application must be a machine-to-machine (M2M) application.
+
+> For more detailed instructions, refer to the [Connect IDP](/getting-started/connect-idp) topic in the 
+Getting Started documentation.
+
+When you click the Connect button, Aserto will start streaming your Auth0 tenant users into 
+the Aserto directory.
+
+## Connecting a Source Code provider
+
+> Currently Aserto supports GitHub as a source code provider. More are on the way!
+
+Click on the "Sign in and connect" button for your source code provider. You'll go through 
+an OAuth2 consent flow. Once you've completed the flow, your source code provider should show 
+as connected.
+
+## Disconnecting
+
+Simply click the "Disconnect" button to disconnect an existing connection.

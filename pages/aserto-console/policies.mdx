@@ -1,0 +1,42 @@
+---
+name: Managing Policies
+---
+
+# Managing Policies
+
+The underpinning of Aserto's authorization model is a [policy](/overview/policy). 
+
+Policies are authored, stored, and versioned as code in a `git` repository.
+
+> Currently, GitHub is the only supported source for policy repositories. More to come!
+
+## Add a policy 
+
+![Add a policy](/add-a-policy.png)
+
+When you click on “Add a policy”, select “GitHub” as your source code provider. If you're not connected 
+to GitHub yet, click the “Sign in & connect” button and complete GitHub's OAuth2 consent flow.
+
+![sign in on github](/sign-in-github.png)
+
+In the next step, you'll be asked to select an organization & repo. Unless 
+you already have a GitHub repository with the right GitHub Actions for building and pushing a policy image, 
+select the “New (using template)” radio button, and select one of the templates.  
+
+![create from template](/create-from-template.png)
+
+Name your new repository with the prefix `policy-` (for example, `policy-peoplefinder`). This will 
+clone the template to the organization and repository name that you selected. The repository will 
+have the right GitHub Action installed, so that when you tag a commit, a new policy image will 
+automatically be built and pushed to the Aserto Registry. See the [Policy Lifecycle](/overview/policy-lifecycle)
+topic for more information.
+
+Finally, name your policy with a descriptive name (e.g. peoplefinder). 
+
+![name policy](/name-policy.png)
+
+## Remove a policy
+
+Simply click the `x` in the top right corner of the policy to remove it. Note that removing a policy 
+from your Aserto tenant doesn't remove the policy repository. To remove the repository from your git 
+provider, use that provider's API or UI. 

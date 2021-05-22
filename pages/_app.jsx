@@ -142,7 +142,14 @@ export default function App(props) {
             "make-policy-change.mdx": true,
             "install-onebox.mdx": true,
           },
-          "authorizer": {
+          "aserto-console": {
+            "introduction.mdx": true,
+            "connections.mdx": true,
+            "directory.mdx": true,
+            "policies.mdx": true,
+            "hosted-authorizer.mdx": true,
+          },
+          "authorizer-guide": {
             "overview.mdx": true,
             "authz.mdx": true,
             "is.mdx": true,
