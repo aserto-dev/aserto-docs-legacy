@@ -1,0 +1,70 @@
+---
+name: is API
+---
+
+# `authz.is`
+
+The `is` API is the primary API for determining whether a user is authorized to perform an action 
+on a resource. The inputs to the `is` API are the user context, the set of decisions that the calling 
+application wants to evaluate, the policy module used to make the decision(s), and the (optional) resource 
+context for making the decision(s).
+
+## URL
+
+`POST .../api/v1/authz/is`
+
+## Input payload
+
+```json
+{
+  "identityContext": {
+    "identity": "[aserto-user-guid]",
+    "mode": "IDENTITY_MODE"
+  }, 
+  "policyContext": {
+    "decisions": [
+      "string"
+    ],
+    "id": "string",
+    "path": "string"
+  },
+  "resourceContext": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  }
+}
+```
+
+The `identityContext` map is documented [here](/authorizer/identity-context).
+
+The `policyContext` map is documented [here](/authorizer/policy-context).
+
+The `resourceContext` map is a key-value map that is passed into the authorizer and materialized 
+as `input.resource` in the policy.
+
+This is useful for driving lookup tables that match up resources to their owners. 
+For example, let's say you have a sales order that is owned by a user in the system, and you 
+only want that user to be able to view the sales order.  
+
+Passing in the following `resourceContext`:
+
+```json
+"resourceContext": {
+  "ownerId": "[owner-resource-id]"
+}
+```
+
+You can use this in a policy as follows:
+
+```rego
+package sample.GET.api.orders
+default allowed = false
+
+allowed {
+  input.user.id == input.resource.ownerId
+}
+```
+
+If the logged-in user's ID is the same as the ownerId passed in for the sales order, the `allowed`
+decision will evaluate to `true`.

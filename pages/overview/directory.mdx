@@ -1,0 +1,29 @@
+---
+name: User Directory
+---
+
+# Aserto Directory
+
+The Aserto Directory collects user information from identity providers that the user has 
+[connected](/overview/connections) to the control plane, and makes that user information available 
+to Authorizer instances. 
+
+## Tenant Directory
+
+Each tenant has an isolated directory that is scoped to that tenant. The tenant directory is shared 
+across policies.
+
+## Authorizer Directory
+
+Each Authorizer instance has its own copy of the tenant directory, known as the Edge Directory Service (EDS). 
+Authorizers use the EDS for real-time access to user attributes, roles, and scopes, that can be specified 
+in policies to help make authorization decisions.
+
+Aserto transparently synchronizes changes from the source identity providers (e.g. Auth0) to the tenant 
+directory, and from the tenant directory to each of the Edge Directory Services that live with the 
+Authorizers.
+
+## User Context
+
+Policies can reference [user context](/overview/policy#user-context). A calling application can 
+provide the [identity context](/authorizer/identity-context) which is used to load that user context.

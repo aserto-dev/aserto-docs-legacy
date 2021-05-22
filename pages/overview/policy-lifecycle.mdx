@@ -1,8 +1,8 @@
 ---
-name: Policy as code
+name: Policy Lifecycle
 ---
 
-# Policy as code
+# Policy Lifecycle
 
 ## Policy 
 
@@ -18,6 +18,8 @@ Policies are **authored** using a text / code editor, **built** into an image, *
 a registry, **run** in an Authorizer, and **consumed** by an application.
 
 ![Policy as code](/policy-as-code.png)
+
+Aserto's control plane helps manage the policy lifecycle.
 
 ### Author
 
@@ -41,7 +43,6 @@ You can run a policy image, which loads it into an **Authorizer** instance.
 
 ### Consume
 
-An application that wants to 
-authorize a user's access to a resource based on the policy can call the Authorizer, passing it the user, resource, 
-and policy, and the Authorizer will evaluate the policy with the provided inputs and returns a boolean result of 
-whether the user has access to the resource based on the given policy.
+An application that wants to authorize a user's access to a resource based on the policy can call the Authorizer, 
+passing it the user, resource, and policy, and the Authorizer will evaluate the policy with the provided 
+inputs and returns a boolean result of whether the user has access to the resource based on the given policy.

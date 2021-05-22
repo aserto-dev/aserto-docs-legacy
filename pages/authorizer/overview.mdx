@@ -1,0 +1,21 @@
+---
+name: Overview
+---
+
+# Overview
+
+The [Authorizer](/overview/authorizer) is an open source authorization engine which uses the 
+[Open Policy Agent](https://www.openpolicyagent.org) (OPA) to 
+compute a [*decision*](/overview/decision) based on a [*policy*](/overview/policy), 
+[*user context*](/overview/user-context), and *data*.
+
+An application can interact with the Authorizer through a set of gRPC or HTTPS REST APIs.
+
+## Authorizer API categories
+
+The Authorizer provides the following APIs to calling applications: 
+* [Authorization](/authorizer/authz) (`authz`)
+* [Directory](/authorizer/dir) (`dir`)
+* [Information](/authorizer/info) (`info`)
+* [Policy](/authorizer/policy) (`policy`)
+* [System](/authorizer/sys) (`sys`)

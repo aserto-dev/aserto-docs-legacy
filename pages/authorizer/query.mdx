@@ -1,0 +1,42 @@
+---
+name: query API
+---
+
+# `authz.query`
+
+The `query` API is the most abstract API for interacting with the Authorizer. It allows the caller to 
+send a general query to the Authorizer, along with an input, and returns the output from the 
+Authorizer.
+
+## URL
+
+`POST .../api/v1/authz/query`
+
+## Input payload
+
+```json
+{
+  "identityContext": {
+    "identity": "[aserto-user-guid]",
+    "mode": "IDENTITY_MODE"
+  }, 
+  "input": "string",
+  "query": "string",
+  "options": {
+    "instrument": true,
+    "metrics": true,
+    "trace": "TRACE_LEVEL_UNKNOWN",
+    "traceSummary": true
+  }
+}
+```
+
+The `identityContext` map is documented [here](/authorizer/identity-context).
+
+The `input` parameter is a string that encodes a JSON document, and is mapped into the `input` in the context of 
+evaluating the policy.
+
+The `query` parameter is a rego query that is evaluated over the policy. 
+
+The `options` map allows the caller to instrument the query, retrieve metrics, set a trace level, and 
+get a trace summary.

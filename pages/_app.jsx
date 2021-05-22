@@ -121,9 +121,16 @@ export default function App(props) {
         }}
         sidebarOrdering={{
           "index.mdx": true,
-          "policy-as-code.mdx": true,
-          "enterprise-ready.mdx": true,
-          "built-for-developers.mdx": true,
+          "overview": {
+            "introduction.mdx": true,
+            "authorizer.mdx": true,
+            "control-plane.mdx": true,
+            "policy": true,
+            "tenant.mdx": true,
+            "connections.mdx": true,
+            "policy-lifecycle.mdx": true,
+            "directory.mdx": true,
+          },
           "getting-started": {
             "quickstart.mdx": true,
             "create-account.mdx": true,
@@ -134,6 +141,25 @@ export default function App(props) {
             "deploy-peoplefinder.mdx": true,
             "make-policy-change.mdx": true,
             "install-onebox.mdx": true,
+          },
+          "authorizer": {
+            "overview.mdx": true,
+            "authz.mdx": true,
+            "is.mdx": true,
+            "decisiontree.mdx": true,
+            "query.mdx": true,
+            "identity-context.mdx": true,
+            "policy-context.mdx": true,
+            "dir.mdx": true,
+            "policy.mdx": true,
+          },
+          "command-line-interface": {
+            "introduction.mdx": true,
+            "installation.mdx": true,
+            "login.mdx": true,
+            "tenant.mdx": true,
+            "policies.mdx": true,
+            "connections.mdx": true,
           },
         }}
       >

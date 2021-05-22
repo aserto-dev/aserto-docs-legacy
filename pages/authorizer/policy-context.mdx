@@ -1,0 +1,50 @@
+---
+name: Policy Context
+---
+
+# Policy Context
+
+The `authz.is` and `authz.decisiontree` APIs take a Policy Context argument from the calling application. 
+
+This parameter helps identify the policy context over which to evaluate.
+
+## Setting the Policy Context
+
+`POST .../api/v1/authz/is`
+```json
+{
+  "policyContext": {
+    "decisions": [
+      "allowed"
+    ],
+    "id": "[policy-id]",
+    "path": "sample.GET.api.orders"
+  }, ...
+}
+```
+
+The policy context above will evaluate the `allowed` decision for the policy module 
+`sample.GET.api.orders`. 
+
+For the following Rego package:
+
+```rego
+package sample.GET.api.orders
+
+allowed {
+  true
+}
+```
+
+Calling `is` with the above payload will return the following response:
+
+```json
+{
+  "decisions": [
+    {
+      "decision": "allowed",
+      "is": true
+    }
+  ]
+}
+```
