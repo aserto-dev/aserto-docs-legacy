@@ -31,18 +31,39 @@ can be part of the policy.
 The set of source files that comprise a policy are built into a **Policy Image** using a set of tools that 
 are modeled after the `docker` toolset.  You can build and tag a policy just like you build and tag a docker image.
 
+> Currently, the Aserto control plane wires up directly to a git repository that contains policy files, and 
+> does not expose the policy image directly. A GitHub **build action** automatically builds a new version of 
+> a policy image when the source repository is **tagged** with a new tag:
+
+```bash
+git commit -am 'new policy version'
+git tag v0.1.2 && git push --tags
+```
+
 ### Publish 
 
 You can push a policy image to a **Policy Repository**, which is hosted in a **Policy Registry**, such as `registry.prod.aserto.com`.
 
 You can pull a policy image from a Policy Repository just like you pull a docker image.
 
+> Currently, the Aserto Policy Registry is not exposed using a public API. The GitHub action will build 
+> a policy image and push it to the Aserto Policy Registry when the repo is tagged. In the future, the Policy 
+> Registry will support a set of public operations very similar to a Docker registry.
+
 ### Run
 
 You can run a policy image, which loads it into an **Authorizer** instance.  
 
+> Currently, Authorizers will automatically load and run the latest policy version stored in the  
+> Policy Registry. In the future, Authorizers will be able to load run an explicit version of a policy image.
+
 ### Consume
 
 An application that wants to authorize a user's access to a resource based on the policy can call the Authorizer, 
-passing it the user, resource, and policy, and the Authorizer will evaluate the policy with the provided 
-inputs and returns a boolean result of whether the user has access to the resource based on the given policy.
+passing it the policy, decision(s), user context, and resource context, and the Authorizer will evaluate the 
+policy with the provided inputs and returns the boolean value(s) of the requested decision(s), allowing the 
+application to definitively check whether the user has access to the resource based on the given policy.
+
+The [`authz.is`](/authorizer/is) API is the underlying mechanism for an application to call the 
+Authorizer to make a decision. The [language SDKs](/sdks) provide higher-level abstractions for interacting 
+with the authorizer.

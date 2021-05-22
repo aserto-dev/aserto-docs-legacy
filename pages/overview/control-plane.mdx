@@ -4,14 +4,17 @@ name: Control Plane
 
 # Control Plane
 
-The Aserto Control Plane manages the lifecycle of *policies*, *user context*, and *data* that are 
-used by the authorizer. The control plane makes it easy to manage these artifacts centrally, and 
+The Aserto Control Plane manages the lifecycle of **policies**, **user context**, and **data** that are 
+used by the Authorizer. The control plane makes it easy to manage these artifacts centrally, and 
 takes care of the details of synchronizing them to the Authorizer instance(s) deployed at the edge.
 
-## Concepts
+## Tenants
+An Aserto [Tenant](/overview/tenant) provides the organizational scoping mechanism for artifacts 
+managed by the Aserto Control Plane. You can think of a tenant just like a GitHub organization.
 
-The main concepts of the Aserto Control Plane are:
-* [Tenant](/overivew/tenant): the organizational unit for Aserto
+## Artifacts 
+
+The artifacts that are managed per-tenant are:
 * [Connections](/overview/connections): connections to external systems such as identity providers and source code control systems
 * [Policies](/overview/policy-lifecycle): references to a set of authorization policy repositories
 * [User directory](/overview/directory): the meta-directory that Aserto builds from the identity providers that it is connected to

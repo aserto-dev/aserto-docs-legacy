@@ -124,8 +124,8 @@ export default function App(props) {
           "overview": {
             "introduction.mdx": true,
             "authorizer.mdx": true,
-            "control-plane.mdx": true,
             "policy": true,
+            "control-plane.mdx": true,
             "tenant.mdx": true,
             "connections.mdx": true,
             "policy-lifecycle.mdx": true,
