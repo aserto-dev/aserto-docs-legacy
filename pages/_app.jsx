@@ -164,7 +164,6 @@ export default function App(props) {
             "introduction.mdx": true,
             "installation.mdx": true,
             "login.mdx": true,
-            "tenant.mdx": true,
             "policies.mdx": true,
             "connections.mdx": true,
           },
