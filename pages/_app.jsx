@@ -1,60 +1,9 @@
 import { DokzProvider, GithubLink, ColorModeSwitch } from "@aserto/dokz";
 import React, { Children, Fragment } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { ChakraProvider, Link as ChakraLink } from "@chakra-ui/react";
-
-const CustomLink = ({children, href, ...props}) => {
-  return href.startsWith("/") || href === "" ? (
-    <ChakraLink
-      w='fit-content'
-      position='relative'
-      lineHeight='1.4em'
-      textDecoration='none'
-      color='#277F82'
-      fontWeight='medium'
-      borderBottom='2px solid'
-      borderColor='transparent'
-      py='0.2em'
-      // isTruncated
-      transition='border-color 0.2s ease-in-out 0s'
-      _hover={{
-          borderColor: 'currentColor',
-      }}
-    >
-      <Link href={href} {...props}>
-        {children}
-      </Link>
-    </ChakraLink>
-  ) : (
-    <ChakraLink
-      w='fit-content'
-      position='relative'
-      lineHeight='1.4em'
-      textDecoration='none'
-      color='#277F82'
-      fontWeight='medium'
-      borderBottom='2px solid'
-      borderColor='transparent'
-      py='0.2em'
-      // isTruncated
-      transition='border-color 0.2s ease-in-out 0s'
-      _hover={{
-          borderColor: 'currentColor',
-      }}
-      {...props}
-    >
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      >
-        {children}
-      </a>                
-    </ChakraLink>
-  );
-}
+import CustomLink from '../src/components/CustomLink'
+import './_app.css'
 
 const HeaderLink = ({ children, ...props }) => {
   return (
@@ -98,6 +47,7 @@ export default function App(props) {
         <meta name="description" content="Aserto documentation" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <title>Aserto Documentation</title>
+        <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet" />
       </Head>
       <DokzProvider
         headerItems={[
@@ -159,6 +109,12 @@ export default function App(props) {
             "policy-context.mdx": true,
             "dir.mdx": true,
             "policy.mdx": true,
+          },
+          "software-development-kits": {
+            "sdks.mdx": true,
+            "react.mdx": true,
+            "express.mdx": true,
+            "javascript.mdx": true,
           },
           "command-line-interface": {
             "introduction.mdx": true,
