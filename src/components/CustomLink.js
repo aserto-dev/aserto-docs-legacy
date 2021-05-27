@@ -41,16 +41,12 @@ const CustomLink = ({children, href, ...props}) => {
       _hover={{
           borderColor: 'currentColor',
       }}
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
       {...props}
     >
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      >
-        {children}
-      </a>                
+      {children}
     </ChakraLink>
   )
 }
