@@ -43,7 +43,7 @@ export default function App(props) {
           rel="stylesheet"
           key="google-font-Fira"
         />
-        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="description" content="Aserto documentation" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <title>Aserto Documentation</title>
