@@ -4,14 +4,14 @@ name: SDKs
 
 import sdks from '../../src/sdks'
 import Sdk from '../../src/components/Sdk'
+import Hr from '../../src/components/Hr'
 
 # Aserto SDKs
 
 <div>
+  <Hr />
   {sdks.map((s) => 
-    <div style={{
-      margin: 20,
-    }}>
+    <div>
       <Sdk
         title={s.title}
         icon={s.icon}
@@ -19,6 +19,7 @@ import Sdk from '../../src/components/Sdk'
         docs={s.docs}
         sample={s.sample}
         />
+      <Hr />
     </div>
   )}
 </div>
