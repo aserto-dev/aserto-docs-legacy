@@ -80,6 +80,7 @@ export default function App(props) {
             "connections.mdx": true,
             "policy-lifecycle.mdx": true,
             "directory.mdx": true,
+            "decision-logs.mdx": true,
           },
           "getting-started": {
             "quickstart.mdx": true,
