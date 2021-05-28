@@ -7,7 +7,7 @@ export default [{
 }, {
   title:'Javascript SPA', 
   icon: 'javascript.png',
-  github: 'https://github.com/aserto-dev/aserto-spa-sdk',
+  github: 'https://github.com/aserto-dev/aserto-spa-js',
   docs: '/software-development-kits/javascript',
   sample: 'https://github.com/aserto-demo/peoplefinder',
 }, {

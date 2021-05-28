@@ -1,5 +1,10 @@
 import React from 'react'
+import { Divider, Box } from '@chakra-ui/react'
 
-const Hr = () => <hr style={{ marginTop: '2em!important', marginBottom: '2em!important' }}/>
+const Hr = () =>       
+  <Box mt={4} mb={4}>
+    <Divider />
+  </Box>
+
 
 export default Hr
