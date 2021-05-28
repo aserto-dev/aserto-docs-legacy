@@ -1,5 +1,5 @@
 import { DokzProvider, GithubLink, ColorModeSwitch } from "@aserto/dokz";
-import React, { Children, Fragment } from "react";
+import React, {Children, Fragment, useEffect} from "react";
 import Head from "next/head";
 import { ChakraProvider, Link as ChakraLink } from "@chakra-ui/react";
 import CustomLink from '../src/components/CustomLink'
@@ -35,6 +35,7 @@ const HeaderLink = ({ children, ...props }) => {
 
 export default function App(props) {
   const { Component, pageProps } = props;
+
   return (
     <ChakraProvider resetCSS>
       <Head>

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@aserto/dokz@^2.0.31":
-  version "2.0.31"
-  resolved "https://registry.yarnpkg.com/@aserto/dokz/-/dokz-2.0.31.tgz#b81b5c51a90aab38fcbfc60ca80e81565bd5a552"
-  integrity sha512-WSFITsAo5QTgBAPqMCRvCHgrbpHw1bT2NuwYxPD8aLOymOOWvohppiAce9Iv7dLjhXKfX+WoUvICQYrk0t9ctg==
+"@aserto/dokz@^2.0.32":
+  version "2.0.32"
+  resolved "https://registry.yarnpkg.com/@aserto/dokz/-/dokz-2.0.32.tgz#c7f2ac92394d230bbb891b645aed77cb41d4f7aa"
+  integrity sha512-+DyQV2a7sBxySHaE8JH872GyMblbeeso54vqQ2fj5UcjV7XrML7NS8Qvi7KwV/4WQEJ+tZHzpkIhVwz1hKd72Q==
   dependencies:
     "@babel/generator" "^7.10.2"
     "@babel/parser" "^7.10.2"
