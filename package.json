@@ -9,7 +9,7 @@
         "start": "next start"
     },
     "dependencies": {
-        "@aserto/dokz": "^2.0.31",
+        "@aserto/dokz": "^2.0.32",
         "@chakra-ui/react": "latest",
         "@emotion/react": "latest",
         "@emotion/styled": "latest",
