@@ -72,6 +72,7 @@ export default function App(props) {
         }}
         sidebarOrdering={{
           "index.mdx": true,
+          "api-reference.mdx": true,
           "overview": {
             "introduction.mdx": true,
             "authorizer.mdx": true,
