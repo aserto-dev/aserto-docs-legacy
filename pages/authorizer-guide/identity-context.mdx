@@ -7,12 +7,18 @@ name: Identity Context
 When an Authorizer evaluates a policy, it receives an Identity Context from the calling application. 
 The `mode` property of that Identity Context instructs the Authorizer how to identify the user:
 * ANONYMOUS: the policy is evaluated without a user context
-* JWT: the user context is extracted from the `sub` claim of the JSON Web Token (JWT) passed in the `Authorization` header
 * MANUAL: the user context is provided as part of the request
 
-In the JWT and MANUAL cases, the Authorizer will look up the user identity in its local directory clone 
-(known as the Edge Directory Service, or EDS). It will then load the user context and make it available 
-to the Policy as `input.user`. 
+## Passing a user identity 
+
+In the MANUAL case, the Authorizer will look up the `identity` string in its 
+local directory clone (known as the Edge Directory Service, or EDS). It will then load the user 
+context and make it available to the Policy as `input.user`. 
+
+For a user-facing API (for example, a back-end REST API that requires a JSON Web Token (JWT) 
+in the `Authorization` header), the caller will often extract the `sub` claim from the JWT and use it 
+in the `identity` field. That said, the `identity` can be any key that is used by the Identity Provider 
+to identify the user.
 
 ## Setting the Identity Context
 
@@ -35,6 +41,6 @@ package sample.GET.api.orders
 default allowed = false
 
 allowed {
-  input.user.attributes.department == "Sales"
+  input.user.attributes.properties.department == "Sales"
 }
 ```
