@@ -90,6 +90,7 @@ export default function App(props) {
             "create-policy.mdx": true,
             "set-up-users.mdx": true,
             "connect-idp.mdx": true,
+            "extend-user-attributes.mdx": true,
             "create-auth0-app.mdx": true,
             "deploy-peoplefinder.mdx": true,
             "make-policy-change.mdx": true,

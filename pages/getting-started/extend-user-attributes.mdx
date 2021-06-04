@@ -1,0 +1,48 @@
+---
+name: Extend user attributes 
+---
+
+# Add extended attributes for PeopleFinder users
+
+PeopleFinder expects to operate over users with extended attributes like department, title, manager.  
+These extended attributes can come from the identity provider, or can be stored as user extensions 
+in the Aserto directory. This second option is more flexible, since it doesn't require an application 
+to have write access to a customer's identity provider in order to store properties, roles, or permissions.
+
+The PeopleFinder sample demonstrates this use case. It utilizes three properties that aren't stored 
+in the identity provider: **department**, **title**, and **manager**.
+
+We're going to use the Aserto CLI to add these extended attributes to each of the users that Aserto 
+imported from the identity provider (Auth0) in the last step.
+
+## Install the Aserto CLI
+
+```bash
+brew tap aserto-dev/tap && brew install aserto
+```
+
+Login to your account:
+
+```bash
+aserto login
+```
+
+## Add the user extensions 
+
+Download the `users.json` file:
+
+```bash
+wget https://raw.githubusercontent.com/aserto-dev/aserto-idp-seed/main/pkg/data/users.json
+```
+
+Use the Aserto CLI to upload extended attributes for every user we created in Auth0:
+
+```bash
+aserto dir load-users --provider json --input input.json
+```
+
+Verify that the users now have extended attributes:
+
+```bash
+aserto dir list-users
+```
