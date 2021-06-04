@@ -45,5 +45,13 @@ aserto dir load-users --provider json --input acmecorp.json
 Verify that the users now have extended attributes:
 
 ```bash
-aserto dir list-users
+aserto dir get-user-ext --id 011a88bc-7df9-4d92-ba1f-2ff319e101e1 props
 ```
+```json
+{
+  "department": "CRM Strategy",
+  "manager": "2cfdb538-a03d-44b1-a0f2-b7ef32b713a7",
+  "title": "CRM Consultant"
+}
+```
+
