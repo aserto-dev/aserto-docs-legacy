@@ -29,16 +29,17 @@ aserto login
 
 ## Add the user extensions 
 
-Download the `users.json` file:
+Download the `acmecorp.json` file, which contains the user extension data for the 272 users that 
+we loaded into Auth0 in the [Set up test users](/getting-started/set-up-users) topic:
 
 ```bash
-wget https://raw.githubusercontent.com/aserto-dev/aserto-idp-seed/main/pkg/data/users.json
+wget https://raw.githubusercontent.com/aserto-dev/aserto-cli/main/assets/acmecorp.json
 ```
 
 Use the Aserto CLI to upload extended attributes for every user we created in Auth0:
 
 ```bash
-aserto dir load-users --provider json --input input.json
+aserto dir load-users --provider json --input acmecorp.json
 ```
 
 Verify that the users now have extended attributes:
