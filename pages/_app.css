@@ -1,3 +1,7 @@
 .custom-link a {
   align-self: center;
 }
+
+a {
+  color: inherit !important;
+}
