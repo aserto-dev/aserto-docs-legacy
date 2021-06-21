@@ -7,7 +7,6 @@ import './_app.css'
 
 const HeaderLink = ({ children, ...props }) => {
   return (
-
       <a {...props}>
         {children}
       </a>                
