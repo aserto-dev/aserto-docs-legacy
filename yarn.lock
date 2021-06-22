@@ -36,10 +36,10 @@
     react-select "^4.0.2"
     react-table "^7.7.0"
 
-"@aserto/dokz@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@aserto/dokz/-/dokz-2.1.2.tgz#58a9a7a048fd61eca158e2a048d110c56a68f097"
-  integrity sha512-7CW24rMEOMrSC+PdaKS8GX+iQp+Vjoxk/LeFJMJ89MHC3NOX78L2hD5xW8F+Nc68M2iUrxjZ+piR1yusIEjS2w==
+"@aserto/dokz@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@aserto/dokz/-/dokz-2.1.3.tgz#55c2e5a3f7936268ae0bce6bf87055043da2cc6d"
+  integrity sha512-+pb5M8hddLtFMSS4bhFwBcGTO99Fu3ZpNJhyBzVHWl0y42FPO4NLqnN9hf9/uw50rtVRxY4fx5UZEi8pQRX3XA==
   dependencies:
     "@aserto/aserto-react-components" "1.1.4-beta.0"
     "@babel/generator" "^7.10.2"

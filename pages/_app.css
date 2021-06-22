@@ -25,3 +25,8 @@
    margin: 4px;
    border-radius: 10px;
  }
+
+
+ul {
+    overflow: hidden;
+}
