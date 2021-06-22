@@ -35,6 +35,7 @@ export default function App(props) {
       <DokzProvider
         headerItems={[
           <ColorModeSwitch key="0" style={{
+            marginLeft: 3,
             marginTop: 10,
             marginRight: 20
           }} />,
