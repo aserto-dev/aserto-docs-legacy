@@ -1,7 +1,7 @@
 import { DokzProvider, GithubLink, ColorModeSwitch } from "@aserto/dokz";
 import React, {Children, Fragment, useEffect} from "react";
 import Head from "next/head";
-import { ChakraProvider, Link as ChakraLink } from "@chakra-ui/react";
+import { ChakraProvider, Link as ChakraLink, Box, useColorMode } from "@chakra-ui/react";
 import CustomLink from '../src/components/CustomLink'
 import './_app.css'
 
@@ -15,7 +15,9 @@ const HeaderLink = ({ children, ...props }) => {
 
 export default function App(props) {
   const { Component, pageProps } = props;
+  const { colorMode } = useColorMode()
 
+  console.log(colorMode)
   return (
     <ChakraProvider resetCSS>
       <Head>
@@ -32,9 +34,13 @@ export default function App(props) {
       </Head>
       <DokzProvider
         headerItems={[
+          <ColorModeSwitch key="0" style={{
+            marginTop: 10,
+            marginRight: 20
+          }} />,
           <HeaderLink style={{
             paddingTop: 18
-          }} key="1" href="https://blog.aserto.com">Blog</HeaderLink>,
+          }} key="1" href="https://aserto.com/blog">Blog</HeaderLink>,
           <HeaderLink style={{
             paddingTop: 18
           }} key="2" href="https://aserto.com/about">About</HeaderLink>,
