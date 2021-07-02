@@ -7,9 +7,11 @@ name: Set up test users
 The PeopleFinder sample uses [Auth0](https://www.auth0.com) as its identity provider.  If you don't have 
 an Auth0 account, create one now.  
 
-PeopleFinder expects to operate over users with extended attributes like department, title, manager.  
+PeopleFinder expects to operate over users with extended attributes like `department`, `title`, `manager`, 
+as well as roles.  
+
 In order to set things up correctly, you can load these user definitions into your Auth0 tenant using 
-a CLI. Let’s install the Aserto IDP seed tool which will help with this:
+a command-line tool. Let’s install the Aserto IDP seed tool which will help with this:
 
 ## Install the `aserto-idp-seed` tool
 
@@ -22,7 +24,9 @@ brew tap aserto-dev/tap && brew install aserto-idp-seed
 > **Important note**: you’ll need an Auth0 Machine-to-Machine (M2M) Application, 
 which has been authorized to talk to the Auth0 Management API. In the Auth0 dashboard, 
 select an existing **M2M application** that has access to the Auth0 Management API, 
-or create a new one.  It will look something like this:
+or create a new one.  You will need to authorize this M2M application with at least the
+following scopes: **read:users**, **create:users**, and **update:users**. 
+It will look something like this:
 
 ![Auth0 M2M application](/auth0-m2m.png)
 
@@ -30,11 +34,11 @@ or create a new one.  It will look something like this:
 
 ![Auth0 M2M application management](/auth0-m2m-mgmt.png)
 
-> Ensure the scopes that are authorized include at least `read:users`, `create:users`, and 
-`update:users`, so that the `aserto-idp-seed` tool can read and write users.  You can remove 
-`create:users` and `update:users` once the seed too is done.
+> Ensure the scopes that are authorized include at least **`read:users`**, **`create:users`**, and 
+**`update:users`**, so that the `aserto-idp-seed` tool can read and write users.  You can remove 
+`create:users` and `update:users` once the seed tool is done.
 
-![Auth0 M2M scopes](/auth0-m2m-perms.png)
+![Auth0 M2M scopes](/auth0-m2m-seed-perms.png)
 
 ## Create a `.env` file for the Aserto IDP seed tool
 

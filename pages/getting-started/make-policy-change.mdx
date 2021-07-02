@@ -79,7 +79,7 @@ If you then add the following `allowed `block to the file, the policy will allow
 
 ```rego
 allowed {
-   dir.is_manager_of(input.user.id, input.resource)
+   dir.is_manager_of(input.user.id, input.resource.id)
 }
 ```
 

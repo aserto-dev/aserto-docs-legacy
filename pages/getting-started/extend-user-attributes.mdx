@@ -32,6 +32,8 @@ aserto login
 Download the `acmecorp.json` file, which contains the user extension data for the 272 users that 
 we loaded into Auth0 in the [Set up test users](/getting-started/set-up-users) topic:
 
+> Note: install `wget` if you don't have it yet: `brew install wget`
+
 ```bash
 wget https://raw.githubusercontent.com/aserto-dev/aserto-cli/main/assets/acmecorp.json
 ```
@@ -39,19 +41,22 @@ wget https://raw.githubusercontent.com/aserto-dev/aserto-cli/main/assets/acmecor
 Use the Aserto CLI to upload extended attributes for every user we created in Auth0:
 
 ```bash
-aserto dir load-users --provider json --input acmecorp.json
+aserto directory load-users --provider json --input acmecorp.json
 ```
 
 Verify that the users now have extended attributes:
 
 ```bash
-aserto dir get-user-ext --id 011a88bc-7df9-4d92-ba1f-2ff319e101e1 props
+aserto directory get-user-props 011a88bc-7df9-4d92-ba1f-2ff319e101e1 
 ```
 ```json
 {
   "department": "CRM Strategy",
+  "dn": "cn=karin lamb",
   "manager": "2cfdb538-a03d-44b1-a0f2-b7ef32b713a7",
-  "title": "CRM Consultant"
+  "phone": "+1-20-5555-9834",
+  "title": "CRM Consultant",
+  "username": "karinl"
 }
 ```
 
