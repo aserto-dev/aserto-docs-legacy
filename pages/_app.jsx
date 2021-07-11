@@ -85,6 +85,7 @@ export default function App(props) {
             "extend-user-attributes.mdx": true,
             "create-auth0-app.mdx": true,
             "deploy-peoplefinder.mdx": true,
+            "exploring-peoplefinder.mdx": true,
             "make-policy-change.mdx": true,
             "install-onebox.mdx": true,
           },

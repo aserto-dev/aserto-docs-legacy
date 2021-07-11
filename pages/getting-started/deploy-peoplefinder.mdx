@@ -34,28 +34,10 @@ Netlify is now hard at work cloning the PeopleFinder sample repo into your GitHu
 
 ## Testing the PeopleFinder application
 
-When Netlify is done deploying your site, click on the deployed PeopleFinder URL to show the app hosted at `peoplefinder-xyz123.netlify.app.`  
+When Netlify is done deploying your site, click on the deployed PeopleFinder URL to show the app hosted at a custom URL in the `*.netlify.app` domain.
 
 ![peoplefinder](/peoplefinder.png)
 
-Click on the Login button and sign in with one of the users that are configured in your Auth0 account. If you didn't change the password when setting up the users, the password is `V@rySecr#et321!`. 
-
-[<img src="/peoplefinder-login.png" width="400"/>](peoplefinder-login.png)
-
-The next few screens assume that you’ve seeded your Auth0 tenant with the sample users that we’ve set up for the PeopleFinder application.  These users have extended attributes, like `manager `and `department` which the PeopleFinder application relies on, and are used in the authorization policy. 
-
-![peoplefinder users](/peoplefinder-users.png)
-
-Clicking on any of the users will show their information. Note that users can click the “Edit” button and edit their own information (phone number), but can’t update other user’s information. If you click on Karen, try to change her phone number, and Save, you’ll get an error.
-
-![peoplefinder karin](/peoplefinder-karin.png)
-
-Error for editing another user’s information looks like this. Note that if you log in as a user and try to change your own information, you’ll be able to do it.
-
-![peoplefinder put error](/peoplefinder-put-error.png)
-
-Also note that the “Update” button is disabled for users. This behavior is entirely defined and enforced by the authorization policy, which we will look at next.
-
 ## Next steps
 
-Next, we'll make a change in the policy that will enable managers to update the titles of their reports.
+Next, we'll explore the peoplefinder app and see how the authorization policy controls its behavior.

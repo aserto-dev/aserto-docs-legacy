@@ -7,26 +7,30 @@ name: Make a policy change
 Now that we have PeopleFinder up and running against our policy, we'll make a policy change 
 and see it reflected in PeopleFinder.
 
-## Hosted Authorizer policy
+To start, note that for any user that is not in the "Operations" department, the "Update" button is visible, but disabled. 
+This includes the hero of our story, Euan.
+
+## Policy conventions
 
 The Aserto console shows the current loaded policy for the hosted Authorizer instance for your tenant. If 
 you click the `peoplefinder` policy in the Policies tab, you will see the current set of policy modules. 
-
-Here's an example of a policy module:
-
-![peoplefinder post](/peoplefinder-post.png)
 
 The PeopleFinder policy follows the Aserto convention of a single policy module for each { method, route } 
 of the API.  So PeopleFinder defines a policy for `GET /api/users`, `POST /api/users`, and so on.
 
 The modules are named using the Rego `package` directive, and follow the convention `policyroot.METHOD.route`.
 
-Let's look at the `peoplefinder.POST.api.users._id` module. In this case,
+Let's look at the `peoplefinder.POST.api.users.__id` module. In this case,
 * `policyroot` is `peoplefinder` 
 * `METHOD` is `POST` (signifying an HTTP POST method)
 * `route` is `api.users.__id` (signifying the /api/users/:id route, with periods instead of slashes for a delimiter, following the Rego EBNF rules)
 
-This package controls access to the “Update” button at the bottom of a User card, and defines the policy that authorizes users to make changes to `department` and `title` attributes (see the code listing below).
+Click the `peoplefinder.POST.api.users.__id` policy file. This package controls access to the “Update” button at the bottom of a User card, 
+and defines the policy that authorizes users to make changes to `department` and `title` attributes.
+
+![peoplefinder post](/peoplefinder-post.png)
+
+> Note: don't confuse the this with the `peoplefinder.POST.api.users` policy, which controls the ability to add new users.
 
 ```rego
 package peoplefinder.POST.api.users.__id
@@ -36,7 +40,8 @@ default visible = true
 default enabled = false
 
 allowed {
-    input.user.attr.department == "Operations"
+	props = input.user.attributes.properties
+	props.department == "Operations"
 }
 
 enabled {
@@ -57,7 +62,7 @@ The Update button is visible to anyone, but only enabled for users who are allow
 
 In the Policy settings tab, click on the `https://github.com/[user]/policy-peoplefinder]` link which opens a new browser window. 
 
-![peoplefinder-clone](/peoplefinder-clone.png)
+![peoplefinder policy clone](/peoplefinder-policy-clone.png)
 
 Copy the clone URL, open a terminal window, and do a `git clone` on the URL. Open a code editor window in that repository directory. You’ll see all the modules for the PeopleFinder policy.
 
@@ -75,13 +80,16 @@ If you change the line defining the `enabled `decision to default to `true `inst
 default enabled = true
 ```
 
-If you then add the following `allowed `block to the file, the policy will allow the operation if the logged-in user is the manager of the user they are trying to Update.
+If you then **add** the following `allowed` clause to the file (after the first **allowed** clause), 
+the policy will allow the operation if the logged-in user is the manager of the user they are trying to Update.
 
 ```rego
 allowed {
    dir.is_manager_of(input.user.id, input.resource.id)
 }
 ```
+
+> Note: the `dir.is_manager_of` function is part of a set of built-in Rego functions that Aserto provides.
 
 The final state of the Rego file should look like the code listing below:
 
@@ -93,7 +101,8 @@ default visible = true
 default enabled = true
 
 allowed {
-    input.user.attr.department == "Operations"
+	props = input.user.attributes.properties
+	props.department == "Operations"
 }
 
 allowed {
@@ -121,12 +130,13 @@ Check back to the console and ensure that the new policy is reflected in the Pol
 
 ![peoplefinder post updated ](/peoplefinder-post-updated.png)
 
-When you see the new policy has been loaded by the authorizer, go back to PeopleFinder, reload, now the Update button is enabled, and a manager should be able to update their employee’s title.
-
-In the image below, you can see that if we log in as April Stewart (Euan Garden's manager), she can now update
-Euan's department and title.  
+When you see the new policy has been loaded by the authorizer, go back to PeopleFinder, and switch context to April Stewart from the top-right user context menu. This 
+will simulate a logout of Euan and a login of his manager, April.  Now the Update button is enabled, and April (as Euan's manager) should be able to update Euan's title.
 
 ![april can update euan](/april-can-update-euan.png)
+
+If you change cards (for example, to April's own card), and try to update her title or department, you'll 
+see the error caused by the policy denying the operation, since April is not her own manager. 
 
 ## Recap
 
