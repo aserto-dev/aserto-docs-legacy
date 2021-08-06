@@ -50,20 +50,23 @@ You can pull a policy image from a Policy Repository just like you pull a docker
 > a policy image and push it to the Aserto Policy Registry when the repo is tagged. In the future, the Policy 
 > Registry will support a set of public operations very similar to a Docker registry.
 
-#### GitHub Actions Secret
+---
 
-Aserto can set up a secret for you when you create a new policy.
-The secret is a JSON object that looks like this:
-
-```json
-{
-  "tenant_id": "",
-  "policy_id": "",
-  "push_key": ""
-}
+> **GitHub Actions Secret**
+> 
+> Aserto can set up a secret for you when you create a new policy.
+> 
+> You can also setup this secret yourself, using information from the **Policy Settings** tab in the Aserto Console.
+> 
+> The secret is a JSON object that looks like this:
+> 
+> ```json
+> {
+>   "tenant_id": "",
+>   "policy_id": "",
+>   "push_key": ""
+> }
 ```
-
-You can also setup this secret yourself, using information from the **Policy Settings** tab in the Aserto Console.
 
 ### Run
 
