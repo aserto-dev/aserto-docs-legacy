@@ -17,7 +17,6 @@ export default function App(props) {
   const { Component, pageProps } = props;
   const { colorMode } = useColorMode()
 
-  console.log(colorMode)
   return (
     <ChakraProvider resetCSS>
       <Head>
