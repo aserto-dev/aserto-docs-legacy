@@ -121,6 +121,7 @@ export default function App(props) {
             "login.mdx": true,
             "policies.mdx": true,
             "connections.mdx": true,
+            "directory.mdx": true,
             "onebox.mdx": true,
           },
         }}

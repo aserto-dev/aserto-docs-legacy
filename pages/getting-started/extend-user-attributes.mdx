@@ -31,6 +31,35 @@ Login to your account:
 aserto login
 ```
 
+## Verify that the users were successfully imported 
+
+In the previous step, you connected Auth0 as an identity provider. Let's make sure those users
+were synchronized into the Aserto directory:
+
+```bash
+aserto directory get-user karinl@acmecorp.com
+```
+
+You should get a result that looks like this:
+```json
+{
+  "result":  {
+    "id":  "011a88bc-7df9-4d92-ba1f-2ff319e101e1",
+    "enabled":  false,
+    "display_name":  "Karin Lamb",
+    "email":  "karinl@acmecorp.com",
+    ...
+  }
+}
+```
+
+> Note: if you get an error that looks like the one below, repeat the previous step of connecting the Auth0 tenant.
+> `aserto: error: resolve identity: rpc error: code = Unknown desc = key [karinl@acmecorp.com]: key not found` 
+
+> Advanced: you can also [side-load](/command-line-interface/directory#side-loading) users, but we 
+> don't recommend it just yet - since you'll need to have your Auth0 tenant in good working order in order to 
+> use it as the identity provider for your PeopleFinder instance!
+
 ## Add the user extensions 
 
 Download the `peoplefinder.json` file, which contains the user extension data for the 272 users that 
@@ -53,6 +82,9 @@ Verify that the users now have extended attributes:
 ```bash
 aserto directory get-user-props karinl@acmecorp.com 
 ```
+
+You should get back a result that looks like this:
+
 ```json
 {
   "department": "CRM Strategy",
