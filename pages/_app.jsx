@@ -93,7 +93,7 @@ export default function App(props) {
             "connections.mdx": true,
             "directory.mdx": true,
             "policies.mdx": true,
-            "hosted-authorizer.mdx": true,
+            "view-policies.mdx": true,
             "manage-tenant.mdx": true,
           },
           "authorizer-guide": {
