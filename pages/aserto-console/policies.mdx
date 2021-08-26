@@ -14,10 +14,13 @@ Policies are authored, stored, and versioned as code in a `git` repository.
 
 ![Add a policy](/add-a-policy.png)
 
-When you click on “Add a policy”, select “GitHub” as your source code provider. If you're not connected 
-to GitHub yet, click the “Sign in & connect” button and complete GitHub's OAuth2 consent flow.
+When you click on “Add a policy”, you'll go through a short workflow to select a git repository for your policy, 
+and name that policy in the Aserto console. 
 
-![sign in on github](/sign-in-github.png)
+The first step is to select a connection to a source code control system. If you don't have any yet, follow 
+the instructions to [create one](/aserto-console/connections#connecting-a-source-code-provider).
+
+[<img src="/select-github-connection.png" width="500" />](/select-github-connection.png)
 
 In the next step, you'll be asked to select an organization & repo. Unless 
 you already have a GitHub repository with the right GitHub Actions for building and pushing a policy image, 
