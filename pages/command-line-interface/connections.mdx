@@ -25,14 +25,14 @@ are two types of user connections currently supported:
 To display detailed information about a particular connection, type
 
 ```bash
-aserto tenant get-connection --id <connection-id>
+aserto tenant get-connection <connection-id>
 ```
 
 To verify that a connection is still operational (i.e. the token that Aserto holds is still valid),
 use the following command:
 
 ```bash
-aserto tenant verify-connection --id <connection-id>
+aserto tenant verify-connection <connection-id>
 ```
 
 To discover the types of connections Aserto supports (known as [Providers](/overview/connections#providers)), 
@@ -52,5 +52,5 @@ To get more detailed information about a provider, use the following command (us
 is listed in the `list-providers` results):
 
 ```bash
-aserto tenant get-provider --id <provider-id>
+aserto tenant get-provider <provider-id>
 ```
