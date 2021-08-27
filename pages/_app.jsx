@@ -102,6 +102,7 @@ export default function App(props) {
             "is.mdx": true,
             "identity-context.mdx": true,
             "policy-context.mdx": true,
+            "resource-context.mdx": true,
             "query.mdx": true,
             "display-state-map.mdx": true,
             "decisiontree.mdx": true,

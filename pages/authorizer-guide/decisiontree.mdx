@@ -37,8 +37,12 @@ a set of options.
     "id": "[policy-id]",
     "path": "sample.GET.api.orders",
   },
+  "resourceContext": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
   "options": {
-    "grouping": "FLAT",
     "pathSeparator": "SLASH"
   }
 }
@@ -48,14 +52,10 @@ The `identityContext` map is documented [here](/authorizer-guide/identity-contex
 
 The `policyContext` map is documented [here](/authorizer-guide/policy-context).
 
+The `resourceContext` map is documented [here](/authorizer-guide/resource-context).
+
 The `options` map allows the caller to specify the format for retrieving the cartesian product of 
 paths and decisions that are being requested.
-
-### Grouping
-
-Grouping values are:
-* FLAT: every path is returned in a single flat list
-* VERB: paths are grouped under the first element of the path, which is commonly an HTTP VERB
 
 ### Path separator
 

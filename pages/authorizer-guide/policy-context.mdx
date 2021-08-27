@@ -4,7 +4,7 @@ name: Policy Context
 
 # Policy Context
 
-The `authz.is` and `authz.decisiontree` APIs take a Policy Context argument from the calling application. 
+The `authz.is`, `authz.decisiontree`, and `authz.query` APIs take a Policy Context argument from the calling application. 
 
 This parameter helps identify the policy context over which to evaluate.
 
@@ -48,3 +48,34 @@ Calling `is` with the above payload will return the following response:
   ]
 }
 ```
+
+## Policy context for `decisiontree`
+
+The common usage for `policyContext` in the `decisiontree` API is to identify the policy ID and the policy root.
+
+`POST .../api/v1/authz/decisiontree`
+```json
+{
+  "policyContext": {
+    "decisions": [
+      "visible",
+      "enabled"
+    ],
+    "id": "[policy-id]",
+    "path": "sample"
+  }, ...
+}
+```
+
+This call will evaluate all paths under the "sample" root, and return the values of the "visible" and "enabled" decisions 
+using the `identityContext` and `resourceContext` that may also be passed in.
+
+## Policy context for `query`
+
+The Policy ID can be used to evaluate the query in the context of a particular policy.
+
+## Policy context in `input`
+
+The `policyContext` passed in will be available to the policy as `input.policy`. You can write a generic policy 
+that can reason about which specific policy it is being evaluated over.
+
