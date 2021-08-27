@@ -16,8 +16,8 @@ conjunction with the [Aserto React SDK](/software-development-kits/react), that 
 conditionally rendering UI elements based on the **display state** that corresponds to a decision. 
 
 The inputs to the `decisiontree` API are the user context, the set of decisions that the calling 
-application wants to evaluate, the (optional) policy module used to make the decision(s), and 
-a set of options.
+application wants to evaluate, the (optional) policy module used to make the decision(s), the (optional)
+resource context, and a set of options.
 
 ## URL
 
@@ -28,14 +28,15 @@ a set of options.
 ```json
 {
   "identityContext": {
-    "mode": "JWT"
+    "type": "IDENTITY_TYPE_SUB",
+    "identity": "<subject>"
   }, 
   "policyContext": {
     "decisions": [
       "visible", "enabled"
     ],
     "id": "[policy-id]",
-    "path": "sample.GET.api.orders",
+    "path": "sample",
   },
   "resourceContext": {
     "additionalProp1": "string",

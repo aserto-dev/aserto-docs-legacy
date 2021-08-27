@@ -53,7 +53,7 @@ allowed {
 
 ## Using other JWT claims in a policy
 
-Note that the `identityContext` is availabe as `input.identityContext`. If the policy wants to 
+Note that the `identityContext` is availabe as `input.identity`. If the policy wants to 
 extract additional claims out of a JWT and use them in the policy, it can readily do so.
 
 Assuming the following `identityContext`:
@@ -77,7 +77,7 @@ default allowed = false
 
 # Helper to get the token payload
 token = {"payload": payload} {
-  [header, payload, signature] := io.jwt.decode(input.identityContext.identity)
+  [header, payload, signature] := io.jwt.decode(input.identity.identity)
 }
 
 # only allow sales managers 
