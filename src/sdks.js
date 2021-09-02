@@ -17,4 +17,11 @@ export default [{
   docs: '/software-development-kits/express',
   sample: 'https://github.com/aserto-demo/peoplefinder',
 }, 
+{
+  title:'ASP.NET Core', 
+  icon: 'dotnet-core.png',
+  github: 'https://github.com/aserto-dev/aserto-dotnet',
+  docs: '/software-development-kits/dotnetcore',
+  sample: 'https://github.com/aserto-dev/aserto-dotnet/tree/main/examples',
+}, 
 ]
