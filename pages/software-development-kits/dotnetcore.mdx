@@ -128,7 +128,7 @@ cd dotnetmvc
 md src
 cd src
 
-dotnet new webapi -n QuickstartMVC
+dotnet new mvc -n QuickstartMVC
 
 ```
 
@@ -147,7 +147,7 @@ dotnet run --project dotnetmvc/src/QuickstartMVC/QuickstartMVC.csproj
 For authentication we will use the Cookie and OpenID Connect(OIDC) authentication middleware. For this you need to add `Microsoft.AspNetCore.Authentication.OpenIdConnect` package to your application. This can be done using NuGet by running the following command in your project directory:
 
 ```cmd
-dotnetmvc\src\QuickstartMVC\dotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
+dotnetmvc\src\QuickstartMVC> dotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
 ```
 
 To enable authentication, you will need to update the `ConfigureServices` in your `Startup` class and:
@@ -285,6 +285,7 @@ To add the authentication middleware to the middleware pipeline add a call to th
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
 //..
 ```
 
@@ -411,6 +412,8 @@ On the rest of the endpoints we're going to allow anonymous access, so the rest 
 ``` rego
 allowed = true
 ```
+
+> Note: if you've created the policy from the default template, you need to create a tag in order to push it to Aserto.
 
 **Adding Aserto authorization**
 To enable Aserto authorization you need to add a dependency to the Aserto dotnet middleware:
